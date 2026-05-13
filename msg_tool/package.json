@@ -1,0 +1,30 @@
+{
+  "name": "@k7s-arsenal/msg-tool",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "msg-tool-mcp": "./dist/index.js",
+    "msg-tool": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "bundle:plugins": "node scripts/bundle-plugins.mjs",
+    "dev:mcp": "tsx src/index.ts",
+    "dev:callback": "tsx src/cli.ts callback",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "fastify": "^5.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}

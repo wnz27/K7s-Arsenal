@@ -1,0 +1,25 @@
+{
+  "name": "msg-tool",
+  "description": "Ask the human for blocking agent decisions through MCP and message channels.",
+  "version": "0.1.0",
+  "author": {
+    "name": "K7s Arsenal"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "userConfig": {
+    "shared_secret": {
+      "type": "string",
+      "title": "Shared secret",
+      "description": "Long random secret used to sign action tokens.",
+      "sensitive": true,
+      "required": true
+    },
+    "channel": {
+      "type": "string",
+      "title": "Default channel",
+      "description": "Message channel to use by default.",
+      "default": "console"
+    }
+  }
+}

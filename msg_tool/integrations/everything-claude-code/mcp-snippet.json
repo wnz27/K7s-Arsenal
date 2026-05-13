@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "msg-tool": {
+      "command": "node",
+      "args": ["/absolute/path/to/K7s-Arsenal/msg_tool/claude-plugin/msg-tool/server.js"],
+      "env": {
+        "MSG_TOOL_STATE_DIR": "/absolute/path/to/K7s-Arsenal/msg_tool/.state",
+        "MSG_TOOL_CHANNEL": "console",
+        "MSG_TOOL_SHARED_SECRET": "set-in-your-shell"
+      }
+    }
+  }
+}

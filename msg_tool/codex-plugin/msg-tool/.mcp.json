@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "msg-tool": {
+      "command": "node",
+      "args": ["${CODEX_PLUGIN_ROOT}/server.js"],
+      "env": {
+        "MSG_TOOL_STATE_DIR": "${CODEX_PLUGIN_DATA}/state",
+        "MSG_TOOL_CHANNEL": "${MSG_TOOL_CHANNEL}",
+        "MSG_TOOL_SHARED_SECRET": "${MSG_TOOL_SHARED_SECRET}"
+      }
+    }
+  }
+}
