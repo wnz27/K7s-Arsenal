@@ -1,0 +1,13 @@
+{
+  "name": "k7s-arsenal",
+  "version": "0.2.0",
+  "description": "Install Agent Skills from the K7s Arsenal repository",
+  "type": "module",
+  "bin": {
+    "k7s-arsenal": "bin/cli.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

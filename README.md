@@ -1,60 +1,72 @@
 # K7s Arsenal
 
-面向 AI 编程助手的开源工具与 Skill 集合。当前包含 GameFX 游戏动效 Skill 和 Msg Tool。
+可通过 `npx` 安装的 Agent Skill 集合。每个可安装 Skill 在仓库根目录独占一个目录，无需克隆仓库或手动复制文件。
+
+## 快速安装
+
+### 环境要求
+
+- Node.js 18 或更高版本。
+- 支持项目级或用户级 Agent Skills 的 Kimi Code。
+
+### 查看可安装的 Skill
+
+```bash
+npx --yes github:wnz27/K7s-Arsenal --list
+```
+
+### 安装到当前项目
+
+在目标项目根目录执行：
+
+```bash
+npx --yes github:wnz27/K7s-Arsenal gamefx
+```
+
+文件会安装到当前项目的 `.agents/skills/`。也可以显式指定项目路径：
+
+```bash
+npx --yes github:wnz27/K7s-Arsenal gamefx --project /path/to/project
+```
+
+### 安装到用户级目录
+
+```bash
+npx --yes github:wnz27/K7s-Arsenal gamefx --user
+```
+
+文件会安装到 `~/.agents/skills/`，可在支持用户级 Skill 的项目中使用。
+
+### 更新或重新安装
+
+为避免静默覆盖本地改动，目标文件已存在时安装会停止。确认替换后执行：
+
+```bash
+npx --yes github:wnz27/K7s-Arsenal gamefx --force
+```
+
+用户级安装需要同时加上 `--user`。`--force` 只覆盖同名 Skill 及其命令文件，不影响其他 Skill。
+
+安装或更新后，在 Kimi Code 中执行 `/reload` 刷新 Skill 列表。
+
+## 可用 Skill
+
+| Skill | 说明 |
+|---|---|
+| `gamefx` | 34 个游戏动效、系统机制与性能可视化命令 |
 
 ## GameFX
 
-GameFX 是一个适用于 Kimi Code 的游戏动效制作 Skill，覆盖 [Game Development Cheat Sheet](https://gamedev-cheatsheet.com/) 的完整 34 个条目。调用对应命令后，Agent 会读取独立配方，在当前项目中制作可运行、可调参、可验证的实现，而不只是返回概念解释或提示词。
+GameFX 覆盖 [Game Development Cheat Sheet](https://gamedev-cheatsheet.com/) 的完整 34 个条目。调用对应命令后，Agent 会读取独立配方，在当前项目中制作可运行、可调参、可验证的实现，而不只是返回概念解释或提示词。
 
 ### 功能
 
 - **34 个独立命令**：覆盖 3D & Rendering、Game feel、Systems、Performance 四章。
 - **真实机制与可视化**：实现射线检测、寻路、对象池、固定时间步等实际逻辑，并提供可观察的动画或调试层。
 - **适配现有项目**：优先沿用目标项目的引擎、语言、渲染循环、依赖和代码约定。
-- **独立演示**：没有现有工程且未指定技术栈时，可生成使用原生 Canvas 2D 或 WebGL 的单文件 HTML，不强制安装依赖。
+- **独立演示**：没有现有工程且未指定技术栈时，可生成使用原生 Canvas 2D 或 WebGL 的单文件 HTML。
 - **完整制作配方**：每个条目包含核心规则、动效分镜、常见错误和验收标准。
 - **可信性能数据**：性能指标来自真实测量或内部状态；教学模拟数据必须明确标注。
-
-### 环境要求
-
-- 支持项目级或用户级 Agent Skills 的 Kimi Code。
-- 无需安装 Node.js、Python 包或其他运行时依赖。
-
-### 安装到当前项目
-
-在 macOS 或 Linux 中执行。把 `/path/to/project` 替换为目标项目的绝对路径。
-
-```bash
-git clone https://github.com/wnz27/K7s-Arsenal.git
-cd K7s-Arsenal
-mkdir -p /path/to/project/.agents/skills
-cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
-```
-
-在目标项目中启动 Kimi Code，或执行 `/reload` 刷新 Skill 列表。
-
-### 安装到用户级目录
-
-安装后可在所有支持用户级 Skill 的项目中使用：
-
-```bash
-git clone https://github.com/wnz27/K7s-Arsenal.git
-cd K7s-Arsenal
-mkdir -p ~/.agents/skills
-cp -R .agents/skills/gamefx* ~/.agents/skills/
-```
-
-重新启动 Kimi Code，或执行 `/reload`。
-
-### 更新
-
-```bash
-cd K7s-Arsenal
-git pull
-cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
-```
-
-用户级安装将最后一行目标路径替换为 `~/.agents/skills/`。
 
 ### 使用
 
@@ -71,7 +83,7 @@ cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
 /gamefx-particle-system 使用现有项目的引擎实现火花和烟雾
 ```
 
-#### 3D & Rendering
+### 3D & Rendering
 
 | 命令 | 功能 |
 |---|---|
@@ -84,7 +96,7 @@ cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
 | `/gamefx-quaternions` | 四元数短弧插值和欧拉角对照 |
 | `/gamefx-z-fighting` | 深度冲突、几何偏移和 polygon offset |
 
-#### Game feel
+### Game feel
 
 | 命令 | 功能 |
 |---|---|
@@ -99,7 +111,7 @@ cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
 | `/gamefx-hit-stop` | 局部命中冻结和独立时间域 |
 | `/gamefx-invincibility-frames` | 无敌帧、伤害保护、闪烁和击退 |
 
-#### Systems
+### Systems
 
 | 命令 | 功能 |
 |---|---|
@@ -113,7 +125,7 @@ cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
 | `/gamefx-tunneling` | 端点重叠与扫掠碰撞对照 |
 | `/gamefx-seeded-noise` | 种子噪声、多 octave 地形和确定性重建 |
 
-#### Performance
+### Performance
 
 | 命令 | 功能 |
 |---|---|
@@ -131,27 +143,37 @@ cp -R .agents/skills/gamefx* /path/to/project/.agents/skills/
 2. 执行 `/gamefx-easing` 或任意其他命令。
 3. 检查 Agent 是否读取 `.agents/skills/gamefx/SKILL.md` 及对应配方，并生成可运行实现。
 
-### 源码结构
+## 仓库组织与新增 Skill
+
+每个可安装 Skill 在根目录独占一个目录，目录名就是安装时使用的名称。目录中必须包含 `SKILL.md`，安装器会自动发现，无需修改 CLI。
 
 ```text
-.agents/skills/
+K7s-Arsenal/
 ├── gamefx/
 │   ├── SKILL.md
-│   └── references/
-│       ├── 3d-rendering/
-│       ├── game-feel/
-│       ├── systems/
-│       └── performance/
-├── gamefx-raycasting.md
-├── gamefx-screen-shake.md
-├── gamefx-pathfinding.md
-└── ... 其余 31 个命令入口
+│   ├── references/
+│   │   ├── 3d-rendering/
+│   │   ├── game-feel/
+│   │   ├── systems/
+│   │   └── performance/
+│   └── commands/
+│       ├── gamefx-raycasting.md
+│       ├── gamefx-screen-shake.md
+│       └── ... 其余 32 个命令入口
+├── <future-skill>/
+│   ├── SKILL.md
+│   ├── references/       # 可选
+│   └── commands/         # 可选
+├── bin/cli.mjs
+├── package.json
+├── docs/
+└── README.md
 ```
 
-`gamefx/SKILL.md` 是核心路由和制作流程，`references/` 保存 34 份独立配方，根目录下的 `gamefx-*.md` 是对应的斜杠命令入口。
+安装时，`SKILL.md` 和 `references/` 会复制到目标 Skill 目录，`commands/*.md` 会复制到目标 `.agents/skills/` 根目录。没有额外命令的 Skill 可以省略 `commands/`。
 
-### 参考与许可
+## 参考与许可
 
-概念与动画行为参考 [Game Development Cheat Sheet](https://gamedev-cheatsheet.com/)，配方与实现指南针对 GameFX 重新编写。
+GameFX 的概念与动画行为参考 [Game Development Cheat Sheet](https://gamedev-cheatsheet.com/)，配方与实现指南针对 GameFX 重新编写。
 
 本仓库使用 [MIT License](LICENSE)。
