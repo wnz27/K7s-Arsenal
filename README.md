@@ -1,6 +1,6 @@
 # K7s Arsenal
 
-可通过 `npx` 安装的 Agent Skill 集合。每个可安装 Skill 在仓库根目录独占一个目录，无需克隆仓库或手动复制文件。
+可通过 `npx` 安装的 Agent Skill 集合，也提供本地部署的 MCP 服务。每个可安装 Skill 在仓库根目录独占一个目录，无需克隆仓库或手动复制文件。
 
 ## 快速安装
 
@@ -54,6 +54,10 @@ npx --yes github:wnz27/K7s-Arsenal gamefx --force
 | Skill | 说明 |
 |---|---|
 | `gamefx` | 34 个游戏动效、系统机制与性能可视化命令 |
+
+## MCP
+
+[`k7_translater`](mcps/k7_translater/README.md) 通过 stdio 提供本地文本翻译能力，供本机支持 MCP 的 Agent 使用。安装依赖和接入方式见链接中的说明。
 
 ## GameFX
 
@@ -164,6 +168,8 @@ K7s-Arsenal/
 │   ├── SKILL.md
 │   ├── references/       # 可选
 │   └── commands/         # 可选
+├── mcps/
+│   └── k7_translater/    # 本地翻译 MCP
 ├── bin/cli.mjs
 ├── package.json
 ├── docs/
