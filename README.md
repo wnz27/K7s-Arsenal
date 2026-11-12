@@ -54,10 +54,46 @@ npx --yes github:wnz27/K7s-Arsenal gamefx --force
 | Skill | 说明 |
 |---|---|
 | `gamefx` | 34 个游戏动效、系统机制与性能可视化命令 |
+| [`k7-ablation`](k7-ablation/SKILL.md) | 用单机制消融实验精简 diff、PR 或指定范围，依据行为、失败场景与成本决定删留 |
 
 ## MCP
 
 [`k7_translater`](mcps/k7_translater/README.md) 通过 stdio 提供本地文本翻译能力，供本机支持 MCP 的 Agent 使用。安装依赖和接入方式见链接中的说明。
+
+## K7 Ablation
+
+[`k7-ablation`](k7-ablation/SKILL.md) 用消融实验简化代码：每次移除、内联、合并或替换一个机制，对比用户行为、失败场景与实际成本，判断它应该删除、保留还是待验证。目标是减少需要理解和维护的概念，同时守住原任务的行为与契约。
+
+### 安装
+
+在目标项目根目录执行：
+
+```bash
+npx --yes github:wnz27/K7s-Arsenal k7-ablation
+```
+
+安装位置为 `.agents/skills/k7-ablation/SKILL.md`。需要用户级安装时加 `--user`；更新时加 `--force`。安装或更新后，在 Kimi Code 中执行 `/reload`。
+
+### 使用
+
+向 Agent 明确指定 `k7-ablation`、目标范围，以及是仅评估还是直接精简，例如：
+
+```text
+使用 k7-ablation 精简当前未提交改动，保持现有行为和公开接口，直接完成并验证。
+使用 k7-ablation 审查当前分支相对 main 的改动，仅评估，不修改正式源码。
+使用 k7-ablation 评估 src/cache/ 的缓存机制，对比相关输入、失败场景和实际成本。
+```
+
+分支示例中的 `main` 应替换为实际目标分支；目录示例也应替换为实际路径。未指定范围时，默认检查当前变更。
+
+### 工作方式与交付
+
+按「明确责任 → 建立基线 → 单机制实验 → 证据取舍 → 验证与退役」执行：
+
+- **保住行为**：先明确输入输出、公开契约和必要的失败防护。安全、数据完整性和恢复机制须验证对应失败场景。
+- **逐项取舍**：每次只改变一个机制，根据证据决定删除、合并、替换、保留或待验证；单次调用或测试通过都不足以单独支持删除。
+- **遵循范围**：仅评估时在隔离副本中实验；授权精简时落实最小改动，保护用户已有工作，并检查本次改动产生的孤立项和旧入口。
+- **说明证据**：交付候选取舍表、实际检查结果、同范围 diff 前后统计、相关成本变化与未验证边界；没有实测的数据明确标为未测量。
 
 ## GameFX
 
@@ -164,6 +200,8 @@ K7s-Arsenal/
 │       ├── gamefx-raycasting.md
 │       ├── gamefx-screen-shake.md
 │       └── ... 其余 32 个命令入口
+├── k7-ablation/
+│   └── SKILL.md
 ├── <future-skill>/
 │   ├── SKILL.md
 │   ├── references/       # 可选
@@ -181,5 +219,7 @@ K7s-Arsenal/
 ## 参考与许可
 
 GameFX 的概念与动画行为参考 [Game Development Cheat Sheet](https://gamedev-cheatsheet.com/)，配方与实现指南针对 GameFX 重新编写。
+
+K7 Ablation 综合 [antfu-simplify](https://github.com/antfu/skills/blob/main/skills/antfu-simplify/SKILL.md) 的逐项 diff 精简方法与 [ajiang-ablation](https://github.com/wnz27/ajiang-vibe-coding-skills-learn/blob/main/skills/ajiang-ablation/SKILL.md) 的行为、失败场景和成本对照方法，重新组织为独立 skill。
 
 本仓库使用 [MIT License](LICENSE)。
