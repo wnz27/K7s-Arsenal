@@ -55,6 +55,7 @@ npx --yes github:wnz27/K7s-Arsenal gamefx --force
 |---|---|
 | `gamefx` | 34 个游戏动效、系统机制与性能可视化命令 |
 | [`k7-ablation`](k7-ablation/SKILL.md) | 用单机制消融实验精简 diff、PR 或指定范围，依据行为、失败场景与成本决定删留 |
+| [`tech-write`](tech-write/README.md) | 《技术写作手册》蒸馏的 13 张能力卡：动笔定位、成稿工作流、质量自评、排版、审稿脱敏、传播、翻译、写书工程等 |
 
 ## MCP
 
@@ -203,6 +204,12 @@ K7s-Arsenal/
 │       └── ... 其余 32 个命令入口
 ├── k7-ablation/
 │   └── SKILL.md
+├── tech-write/
+│   ├── SKILL.md
+│   ├── references/       # 13 张能力卡 + 索引/词典/速查
+│   ├── bundle/           # cangjie 蒸馏源码（可重编译）
+│   ├── tests/            # 78 条压力测试用例
+│   └── DIGEST.md         # 全书精华长文
 ├── <future-skill>/
 │   ├── SKILL.md
 │   ├── references/       # 可选

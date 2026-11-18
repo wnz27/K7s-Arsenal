@@ -1,0 +1,48 @@
+{
+  "skill": "book-writing-engineering",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我想写一本关于 Kubernetes 的技术书，该怎么规划？",
+      "expected_behavior": "调用 book-writing-engineering，决策关→骨架→迭代计划",
+      "notes": "正面：写书规划"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "写书写到第三章写不下去了，感觉要烂尾",
+      "expected_behavior": "调用 book-writing-engineering，用迭代交付与目标细化机制处理",
+      "notes": "正面：防烂尾"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "出书到底找出版社还是自出版电子书？",
+      "expected_behavior": "调用 book-writing-engineering，用三问题框架做形态决策",
+      "notes": "正面：形态决策"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "写书的 Markdown 书稿怎么用 Git 和代码引用管理？",
+      "expected_behavior": "应触发路由入口的 writing-toolchain",
+      "notes": "跨 skill 诱饵：工具链"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这篇博客文章写得怎么样",
+      "expected_behavior": "应触发 article-quality-review",
+      "notes": "跨 skill 诱饵：单篇评估"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想靠写技术书赚钱，大概能挣多少？",
+      "expected_behavior": "应给原书版税口径（数量级参考+个案标注）与公益情怀预期，不画饼",
+      "notes": "边界：收入预期"
+    }
+  ]
+}

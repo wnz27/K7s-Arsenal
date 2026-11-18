@@ -1,0 +1,420 @@
+schema_version: 1
+bundle_id: bundle.tech-writing-handbook
+book:
+  title: 技术写作手册
+  author: Thoughtworks 多位作者（主编：张凯峰）
+  source_pack: 技术写作手册-ebook.pdf（约 2020 年，pdftotext 全量提取）
+entry:
+  name: tech-writing-handbook
+  description: 当任务涉及技术写作的启动坚持、动笔定位、成稿工作流、质量自评、排版、发布前审稿脱敏、技术翻译、写书规划、工具链、传播推广或应对负面反馈与流量焦虑时使用的《技术写作手册》来源入口，整合 13 张能力卡。提供方法论指导而非代写；文学创作、学术论文、纯代写润色不适用。
+  core_principles:
+    - 写作驱动学习：写完即兑现价值，发布与流量是副产品，别用外部数据否定写作本身
+    - 动笔先定位：先说服自己，再答三问（讯息/受众/行动），并匹配目标场景的元问题
+    - 质量是唯一可持续策略：五维自评、三遍审读、发布前必脱敏
+    - 写作是工程：自上而下、迭代交付、初学者试读对抗知识的诅咒、纯文本加版本管理
+    - 传播是写作流程的一部分：最后一公里物料三件套，渠道先抉择再匹配
+    - 长期主义预期管理：反馈漏斗与存款模型校准预期，负面反馈分类处置而非情绪化反应
+  out_of_scope:
+    - 文学、小说等非技术内容创作（原书声明非文学语境）
+    - 纯代写、代笔、洗稿（本包提供方法论，不代替用户完成加工）
+    - 学术论文写作规范（原书未覆盖）
+    - 增长黑客式流量运营技巧（与原书立场相反）
+  stop_conditions:
+    - 用户素材或上下文不足且无法补充时，先询问，不编造书中没有的方法
+    - 涉及合规判断（脱敏边界、版权、地图等出版规定）不确定时，提示核对现行法规与组织流程
+    - 用户请求超出原书范围时，明示超出并降级为标注来源的通用建议
+router_entry:
+  name: tech-writing-handbook-router
+  description: 《技术写作手册》能力包的来源路由入口。当请求属于技术写作方法论（动笔前素材发现、成稿工作流、习惯坚持、把文章润色得更通俗易懂的清晰表达、工具链、负面反馈与流量焦虑应对）且未命中本包任何晋级独立 Skill 时，经此入口路由到对应能力卡；晋级能力（定位、质量自评、排版、审稿脱敏、传播、翻译、写书）由独立 Skill 直接处理。
+promotion_budget: 8
+capabilities:
+  - capability_id: cap.twh.writing-habit-design
+    revision: 1
+    status: active
+    slug: writing-habit-design
+    title: 写作启动与长期坚持的机制设计
+    importance: high
+    importance_rationale: 对应 task-01（全书动机层起点，用户最常见卡点）；合并 12 条候选（f01-f04,f13,f14,f24,f27,p01-p07 系），多位作者交叉印证
+    one_liner: 坚持不了写作是反馈结构问题不是意志力问题——设计快速正反馈、降低难度、按存款模型管理前期无反馈的预期
+    intents:
+      - 想开始写技术博客但总是坚持不下来
+      - 写作总是半途而废、新建博客发完第一篇就断更
+      - 怀疑写作值不值得、没时间写
+    keywords: [写作习惯, 坚持, 正反馈, 长期主义, 存款模型, writing habit, motivation, consistency]
+    also_read: [writing-driven-learning, feedback-and-traffic-anxiety]
+    card: cards/writing-habit-design.md
+    frontmatter:
+      description: 当用户想开始写技术博客/文章却坚持不下来、反复断更、怀疑写作价值或觉得没时间写时使用。提供正反馈机制设计、难度削减与长期主义预期管理（存款模型、时间成本口径）。不适用于已有稳定写作习惯者的单篇写作问题，也不用于文章质量评估。
+      tags: [habit, motivation, long-termism]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《写作为什么这么难》；序言；《这几年技术写作的感悟》；《我的第一本英文技术书》
+    promotion:
+      destination: router
+      gate:
+        independent_intent: true
+        independent_contract: false
+        independent_run: true
+        independent_reuse: true
+        independent_eval: false
+      notes: 习惯机制类输出契约偏软（个人化机制清单，完成标准模糊），晋级判据 2 不通过；保留在路由入口内
+  - capability_id: cap.twh.writing-driven-learning
+    revision: 1
+    status: active
+    slug: writing-driven-learning
+    title: 写作驱动学习：知识内化检验机制
+    importance: high
+    importance_rationale: 对应 task-01/task-04；全书价值层核心命题（写作是手段不是目的），含信息/知识/智慧三分、四级阶梯、复述检验三重机制
+    one_liner: 读过不等于学会——用复述/发表检验内化程度，暴露的知识缺口就是下一轮学习的输入
+    intents:
+      - 学完一个技术主题怎么确认自己真的掌握了
+      - 读了很多书/文章但感觉没吸收怎么办
+      - 要不要写读书笔记/拆书稿
+    keywords: [写作驱动学习, 知识内化, 费曼, 复述检验, writing-driven learning, internalization, learning]
+    also_read: [writing-habit-design, clear-expression]
+    card: cards/writing-driven-learning.md
+    frontmatter:
+      description: 当用户想检验自己是否真正掌握某个技术主题、觉得读了很多却没吸收、纠结要不要写读书笔记时使用。提供内化程度自评（四级阶梯）与复述检验流程。不适用于写作习惯养成（用 writing-habit-design）或成稿质量评估。
+      tags: [learning, mental-model]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《写作为什么这么难》；《如何看待写作这件事》；《写了十年技术博客的收获》
+    promotion:
+      destination: router
+      gate:
+        independent_intent: true
+        independent_contract: false
+        independent_run: true
+        independent_reuse: true
+        independent_eval: false
+      notes: 思维模型类能力，输出为自评结论而非标准化交付物，契约不足；路由保留
+  - capability_id: cap.twh.article-positioning
+    revision: 1
+    status: active
+    slug: article-positioning
+    title: 动笔前定位：说服自己、三问与场景元问题
+    importance: critical
+    importance_rationale: 对应 task-02；全书唯一定位类框架（主编七年审稿口径），是所有写作任务的入口环节，遗漏则产出受众混乱的废稿
+    one_liner: 动笔前先过说服自己门禁，再一句话答清三问——传达什么讯息、目标受众是谁、希望受众做什么
+    intents:
+      - 我想写一篇文章但不知道从哪开始
+      - 帮我理清这篇文章的定位/选题角度
+      - 这个主题值不值得写、写给谁看
+    keywords: [动笔前三问, 定位, 选题, 目标受众, positioning, three questions, topic, audience]
+    also_read: [drafting-workflow, article-quality-review]
+    card: cards/article-positioning.md
+    frontmatter:
+      description: 当用户有一个模糊写作意图（已有主题或素材，想写点什么/帮我理清定位/这个主题怎么切入/写给谁看）时使用。产出定位卡：说服自己门禁、三问（讯息/受众/行动）答案、目标场景元问题匹配、质量标准档位。不用于已成稿的质量评估（用 article-quality-review）或发布前检查（用 prepublish-check）；若用户连主题方向都没有（"不知道写什么"），先经路由入口做素材发现，不强行定位。
+      tags: [positioning, checklist, pre-writing]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《如何评价一篇文章》§1-2；《这几年技术写作的感悟》§为什么写博客
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 高频独立意图（不提书名也会提出），输入输出契约明确，可独立评测；晋级
+  - capability_id: cap.twh.drafting-workflow
+    revision: 1
+    status: active
+    slug: drafting-workflow
+    title: 从选题到成稿的写作工作流
+    importance: high
+    importance_rationale: 对应 task-03；全书最完整的单篇成稿 SOP（马大伟七步）+ 素材发现与时间切分，覆盖成稿全过程
+    one_liner: 日常攒素材→SEO 调研差异化→半小时时间盒列提纲→先配图→心流写正文→与旧文互链
+    intents:
+      - 有了一个选题，怎么一步步写成文章
+      - 写文章的工作流程是什么样的
+      - 没时间写作、只有碎片时间怎么写
+    keywords: [写作流程, 工作流, 提纲, 素材, 心流, workflow, drafting, outline, timeboxing]
+    also_read: [article-positioning, article-quality-review, chinese-tech-typography]
+    card: cards/drafting-workflow.md
+    frontmatter:
+      description: 当用户已有选题、想知道如何一步步写成文章，或询问写作流程、时间不够怎么写时使用。覆盖素材收集、SEO 调研、限时提纲、配图、心流进入、互链成稿。动笔前定位未做时先转 article-positioning；成稿后评估转 article-quality-review。
+      tags: [workflow, procedure]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《写作的素材、排版、发布和推广》§如何写作；《如何看待写作这件事》
+    promotion:
+      destination: router
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: false
+        independent_reuse: true
+        independent_eval: true
+      notes: 与 article-positioning 触发高度相邻（"我想写X"两类请求难分），独立运行需联动定位能力；为避免触发竞争保留在路由入口
+  - capability_id: cap.twh.clear-expression
+    revision: 1
+    status: active
+    slug: clear-expression
+    title: 清晰表达训练与写作编程共通原则
+    importance: medium
+    importance_rationale: 对应 task-12/task-04；表达层刻意练习方法 + Strunk & White 八原则，改善"贴代码让人自己理解"类表达转嫁
+    one_liner: 把读者想象成入门者重写解释，每句话都表达本意、相似内容用相似结构——清晰是交流的美德
+    intents:
+      - 我写的技术文章别人总说看不懂
+      - 怎么把复杂技术概念讲得通俗易懂
+      - 代码注释和文档写法有什么讲究
+    keywords: [通俗易懂, 清晰表达, 刻意练习, 代码可读性, clarity, plain language, Strunk White]
+    also_read: [article-quality-review, writing-driven-learning]
+    card: cards/clear-expression.md
+    frontmatter:
+      description: 当用户写出的技术内容被反馈看不懂、想把复杂概念讲通俗、或问代码注释/文档表达原则时使用。提供想象读者训练法与写作/编程共通八原则检查。不用于整篇质量五维评估（用 article-quality-review）或排版规范（用 chinese-tech-typography）。
+      tags: [clarity, writing-craft, principles]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《写了十年技术博客的收获》§表达能力；《写作和编程》全篇
+    promotion:
+      destination: router
+      gate:
+        independent_intent: true
+        independent_contract: false
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 与 article-quality-review 的表达维度相邻，独立契约偏弱（原则清单应用依语境）；路由保留避免重复触发
+  - capability_id: cap.twh.article-quality-review
+    revision: 1
+    status: active
+    slug: article-quality-review
+    title: 文章质量五维自评与改进框架
+    importance: critical
+    importance_rationale: 对应 task-04；全书唯一成体系的评价框架（主编七年审稿经验），是成稿改进的核心工具，遗漏即回到"凭感觉改稿"
+    one_liner: 五维过检：动机真实、回答场景元问题、争取加分项、表达有代入感、结构总分总——逐项判定并产出改进动作
+    intents:
+      - 帮我看看这篇文章写得怎么样、怎么改
+      - 评估/评审一下这篇技术文章的质量
+      - 这篇文章能不能发、还缺什么
+    keywords: [文章质量, 评估, 改稿, 五维框架, 加分项, quality review, article feedback, improve]
+    also_read: [article-positioning, clear-expression, prepublish-check]
+    card: cards/article-quality-review.md
+    frontmatter:
+      description: 当用户拿着一篇已成稿（或半成品）文章求评价、求改进/改写建议、问"能不能发"时使用，包括想提升传播效果的改写诉求（但拒绝标题党/博眼球导向）。按五维框架（动机/元问题/加分项/表达/结构）逐项判定并给改进动作。动笔前定位用 article-positioning；已通过质量评估、做发布前最终把关用 prepublish-check；纯排版问题用 chinese-tech-typography；只要求表达更通俗易懂/润色而非整体评审时，经路由入口用 clear-expression。
+      tags: [quality, review, framework]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《如何评价一篇文章》§1-4；《如何看待写作这件事》§优质内容
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 最高频独立意图（评审/改稿），契约与评测断言明确；晋级
+  - capability_id: cap.twh.prepublish-check
+    revision: 1
+    status: active
+    slug: prepublish-check
+    title: 发布前审读与脱敏把关
+    importance: critical
+    importance_rationale: 对应 task-05；脱敏被遗漏会造成实际职业风险（客户信息/机密/版权泄露），三遍审读提供"改到何时算完"的停机判据
+    one_liner: 发布前两道关：三遍审读（结构→遣词→读者视角）后转他人审校；脱敏四类（客户项目名/机密/同事/版权）逐项打勾
+    intents:
+      - 这篇文章要发了，帮我做最后检查
+      - 发布前需要检查什么、怎么做脱敏
+      - 帮我排查文章里的敏感信息
+    keywords: [发布前检查, 脱敏, 审稿, 校对, 合规, prepublish, review, desensitization, compliance]
+    also_read: [article-quality-review, chinese-tech-typography, distribution-last-mile]
+    card: cards/prepublish-check.md
+    frontmatter:
+      description: 当用户文章已完成、即将发布/提交，请求"最后检查一遍/帮我脱敏/发布前要做什么"时使用。执行三遍审读停机判据 + 他人审校分工 + 四类脱敏清单（客户项目名/公司机密/同事信息/版权）+ 出版合规提示。不做内容质量改进（用 article-quality-review）；发布后的传播物料用 distribution-last-mile。
+      tags: [compliance, checklist, publishing]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《如何看待写作这件事》§写完之后做什么；《如何评价一篇文章》§5.1；《用什么工具写书》§地图合规
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 独立意图明确（发布前把关），与 article-quality-review 以"质量改进 vs 合规放行"区分，互有近邻负例；晋级
+  - capability_id: cap.twh.chinese-tech-typography
+    revision: 1
+    status: active
+    slug: chinese-tech-typography
+    title: 中文技术文章排版与配图规范
+    importance: high
+    importance_rationale: 对应 task-06；高频且规则明确可机器校验（空格/颜色数/段落行数），主编七年编辑口径 + 社区规范（中文文案排版指北）
+    one_liner: 短句短段（3-5 行）、颜色字体字号不超过 3 种、中英文间留半角空格、图片克制且清晰、考虑移动阅读
+    intents:
+      - 帮我检查/修复这篇文章的中文排版
+      - 中英文混排格式有什么规范
+      - 技术文章配图有什么讲究
+    keywords: [排版, 中文排版, 中英文空格, 配图, typography, formatting, layout, images]
+    also_read: [prepublish-check, writing-toolchain]
+    card: cards/chinese-tech-typography.md
+    frontmatter:
+      description: 当用户请求检查/修复中文技术文章排版、问中英文混排规范、配图与图文比例问题时使用。按排版七条+图片四条逐项校验并修正，可配自动化工具（Pangu 等）。不做内容质量评判（用 article-quality-review）；翻译场景的短句取舍不适用本规范。
+      tags: [typography, checklist, mobile-reading]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《如何评价一篇文章》§4.1/4.2；《写作的素材、排版、发布和推广》§写作排版
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 高频、规则原子化、可机器校验，评测断言最明确；晋级
+  - capability_id: cap.twh.distribution-last-mile
+    revision: 1
+    status: active
+    slug: distribution-last-mile
+    title: 传播最后一公里：物料、渠道与交互
+    importance: high
+    importance_rationale: 对应 task-07；作者明确命名"最后一公里"，三件套有硬口径（≤70 字引文），渠道决策合并张/李两位作者视角
+    one_liner: 发布前备齐三件套（SEO URL、70 字内引文、一幅引用图），先按定位选优先渠道再匹配扩展，发布后据积极反馈持续改文
+    intents:
+      - 文章写完了怎么推广/传播
+      - 帮我准备发布物料（简介、引文、配图）
+      - 技术文章发哪些平台、怎么选渠道
+    keywords: [推广, 传播, 渠道, 最后一公里, 引流, distribution, promotion, channels, SEO]
+    also_read: [prepublish-check, feedback-and-traffic-anxiety]
+    card: cards/distribution-last-mile.md
+    frontmatter:
+      description: 当用户文章已完成并准备发布/推广，请求准备传播物料（简介、引文、配图）、选择发布渠道、或问怎么推广技术文章时使用。产出物料三件套 + 渠道优先级决策 + 交互改进闭环。文章未过发布前检查先用 prepublish-check；发布后遇负面反馈/流量焦虑转 feedback-and-traffic-anxiety。平台清单需按用户当前渠道重映射。
+      tags: [distribution, promotion, channels]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《如何评价一篇文章》§5.2-5.3；《写作的素材、排版、发布和推广》§渠道/推广；《技术写作的困境》
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 独立意图明确（推广/物料），输出契约硬（三件套可验收）；晋级
+  - capability_id: cap.twh.tech-translation-workflow
+    revision: 1
+    status: active
+    slug: tech-translation-workflow
+    title: 技术翻译工作流：理解优先、功能对等与五技巧
+    importance: high
+    importance_rationale: 对应 task-08；全书唯一覆盖翻译的完整方法论，技巧各带原书例句，功能对等优先级可执行
+    one_liner: 理解是翻译的源头——先查证弄懂原文，再按准确>易读>风格取舍，五技巧处理结构，脱稿以陌生读者身份校对
+    intents:
+      - 帮我翻译这段技术文档/这篇英文技术文章
+      - 技术翻译怎么做好、有什么技巧
+      - 这句英文怎么翻得自然、直译还是意译
+    keywords: [技术翻译, 翻译技巧, 功能对等, 直译意译, 术语表, translation, technical translation, proofreading]
+    also_read: [clear-expression, writing-toolchain]
+    card: cards/tech-translation-workflow.md
+    frontmatter:
+      description: 当用户请求翻译技术文档/文章、询问技术翻译方法或直译意译取舍、需要建立术语表或校对译文时使用。执行理解优先三步流程、功能对等优先级（准确>易读>风格）、五技巧（词性/分合移位/被动/增删词/脱稿校对）。仅限非文学技术文本；文学翻译不适用；机器翻译相关判断需注意原书为大模型之前语境。
+      tags: [translation, procedure, techniques]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《翻译这件小事》全篇；《我的第一本英文技术书》
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 最强独立意图（翻译请求天然独立），契约含原文例句可作评测基准；晋级
+  - capability_id: cap.twh.book-writing-engineering
+    revision: 1
+    status: active
+    slug: book-writing-engineering
+    title: 写一本书的工程方法
+    importance: high
+    importance_rationale: 对应 task-09；三篇互补构成完整写书链路（决策/结构/交付），试读与迭代交付是防返工核心机制
+    one_liner: 先接受公益情怀预期再开工：自上而下骨架、每章一迭代约一月交编辑、找尽可能多的初学者试读、技术书优先电子版
+    intents:
+      - 我想写一本技术书，该怎么规划和推进
+      - 写书写不下去/怕烂尾怎么办
+      - 出书选自出版还是出版社、电子书还是实体书
+    keywords: [写书, 出书, 迭代交付, 试读, 知识的诅咒, book writing, publishing, ebook]
+    also_read: [writing-toolchain, drafting-workflow]
+    card: cards/book-writing-engineering.md
+    frontmatter:
+      description: 当用户想写一本技术书/教程并寻求规划方法、问写书流程与防烂尾机制、或纠结出版形态（实体/电子、出版社/自出版）时使用。提供投入产出决策、自上而下骨架、循序渐进结构、月度迭代交付、初学者试读、合规早期控制。单篇文章写作不适用（用 drafting-workflow）；工具选型细节用 writing-toolchain。
+      tags: [book-writing, iterative-delivery, decision]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《技术人员如何写一本书》《我的第一本英文技术书》《用什么工具写书》
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: false
+        independent_eval: true
+      notes: 复用频次低（写书非高频）但独立评测可写（正向/负向/输出断言明确），满足 4/5 至少一条；晋级后达预算上限 8
+  - capability_id: cap.twh.writing-toolchain
+    revision: 1
+    status: active
+    slug: writing-toolchain
+    title: 写作工具链：纯文本、版本管理与资产同步
+    importance: medium
+    importance_rationale: 对应 task-10；程序员高频诉求，含反直觉实践（整书单一 Markdown 文件）与 SSOT 同步机制
+    one_liner: 以最小化写作干扰选工具——Markdown 单文件写初稿、Git 管理全程、代码与图源文件直接引用保持同步
+    intents:
+      - 写技术书/长文档用什么工具和流程管理
+      - 书稿里的代码示例怎么和源代码保持同步
+      - Markdown 写书的工程化实践
+    keywords: [写作工具, Markdown, Git, 版本管理, 工具链, tooling, version control, markdown workflow]
+    also_read: [book-writing-engineering, chinese-tech-typography]
+    card: cards/writing-toolchain.md
+    frontmatter:
+      description: 当用户要写技术书/长文档并询问工具选型、书稿工程管理（版本控制、代码示例同步、配图管理）时使用。提供 Markdown+Git 工具链决策、单文件管理、SSOT 资产同步。具体工具版本为 2020 年语境需按当下等价物替换；不做排版规范检查（用 chinese-tech-typography）。
+      tags: [tooling, markdown, git]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《用什么工具写书》全篇；《技术人员如何写一本书》§配图制作
+    promotion:
+      destination: router
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: false
+        independent_eval: true
+      notes: 满足晋级判据但预算已满（8）；频次与独特性低于已晋级七项，保留路由（split-on-evidence 可后升）
+  - capability_id: cap.twh.feedback-and-traffic-anxiety
+    revision: 1
+    status: active
+    slug: feedback-and-traffic-anxiety
+    title: 负面反馈与流量焦虑的分类应对
+    importance: high
+    importance_rationale: 对应 task-11；跨 4 篇交叉印证，含真实失败案例（大 V 恶评关评论两年），是坚持写作的必要支撑
+    one_liner: 先分类再行动——误解类视影响决定澄清（勘误是职责），恶意类无响应义务；用反馈漏斗与叫好叫座双体系校准流量预期
+    intents:
+      - 文章收到恶评/被杠精攻击，要不要回应
+      - 认真写的文章没人看很沮丧怎么办
+      - 要不要追热点/迎合流量写作
+    keywords: [负面评论, 恶评, 流量焦虑, 数字枷锁, 心态, negative feedback, criticism, traffic anxiety]
+    also_read: [writing-habit-design, distribution-last-mile]
+    card: cards/feedback-and-traffic-anxiety.md
+    frontmatter:
+      description: 当用户因文章收到负面评论/恶意攻击纠结是否回应、因阅读量低沮丧、或纠结要不要迎合流量写作时使用。提供反馈分类响应机制（误解/恶意）、评论分量判断、反馈漏斗与叫好叫座双评价体系校准。不用于文章本身的改进（用 article-quality-review）或传播渠道选择（用 distribution-last-mile）。
+      tags: [feedback, mindset, troubleshooting]
+    source_evidence:
+      - source_id: src-main-book
+        location: 《如何看待写作这件事》§负面反馈；《写了十年技术博客的收获》；《技术写作的困境》
+    promotion:
+      destination: router
+      gate:
+        independent_intent: true
+        independent_contract: false
+        independent_run: true
+        independent_reuse: true
+        independent_eval: false
+      notes: 心态/排障类输出契约偏软（响应决策记录，难以标准化断言）；路由保留

@@ -1,0 +1,48 @@
+{
+  "skill": "chinese-tech-typography",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "帮我检查这篇中文技术文章的排版",
+      "expected_behavior": "调用 chinese-tech-typography，按七条排版逐项校验并修正",
+      "notes": "正面：排版检查"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "中英文混排的时候要不要加空格？段落多长合适？",
+      "expected_behavior": "调用 chinese-tech-typography，引用规范第 4/1 条回答",
+      "notes": "正面：规范咨询"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "我文章里放了十几张截图，这样合适吗",
+      "expected_behavior": "调用 chinese-tech-typography，按图片四条判定并给建议",
+      "notes": "正面：配图咨询"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "这篇文章的内容写得怎么样，观点清楚吗",
+      "expected_behavior": "应触发 article-quality-review",
+      "notes": "跨 skill 诱饵：内容评价"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我把这段英文翻译成中文",
+      "expected_behavior": "应触发 tech-translation-workflow",
+      "notes": "跨 skill 诱饵：翻译"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "帮我把这篇译文里的长句全部拆成短句",
+      "expected_behavior": "翻译场景短句取舍存争议（原书自注），不应机械套用排版短句规则，需说明语境差异",
+      "notes": "边界：语境误套用"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "skill": "writing-toolchain",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我要写一本带大量代码示例的技术书，用什么工具管理书稿？",
+      "expected_behavior": "路由至 writing-toolchain，Markdown 单文件+Git+代码引用同步",
+      "notes": "正面：工具选型"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "书稿里的代码示例老是和真实代码不同步，怎么破",
+      "expected_behavior": "路由至 writing-toolchain，SSOT 引用机制",
+      "notes": "正面：同步问题"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "Markdown 写书稿，章一个文件好还是整本一个文件好？",
+      "expected_behavior": "路由至 writing-toolchain，单一文件三收益+多人协作边界",
+      "notes": "正面：工程实践"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "写书整体怎么规划、怎么防止烂尾",
+      "expected_behavior": "应触发 book-writing-engineering",
+      "notes": "跨 skill 诱饵：方法论"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我检查文章排版",
+      "expected_behavior": "应触发 chinese-tech-typography",
+      "notes": "跨 skill 诱饵：排版"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们三个人合著一本书，单一 Markdown 文件还适用吗",
+      "expected_behavior": "应说明多人协作分支策略原书未覆盖，建议按章拆分或约定编辑窗口（B 字段）",
+      "notes": "边界：多人协作"
+    }
+  ]
+}

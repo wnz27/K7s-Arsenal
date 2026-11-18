@@ -1,0 +1,18 @@
+{
+  "bundle_id": "bundle.tech-writing-handbook",
+  "destinations": {
+    "cap.twh.writing-habit-design": {"served_by": "tech-writing-handbook-router"},
+    "cap.twh.writing-driven-learning": {"served_by": "tech-writing-handbook-router"},
+    "cap.twh.article-positioning": {"promoted_to": "article-positioning"},
+    "cap.twh.drafting-workflow": {"served_by": "tech-writing-handbook-router"},
+    "cap.twh.clear-expression": {"served_by": "tech-writing-handbook-router"},
+    "cap.twh.article-quality-review": {"promoted_to": "article-quality-review"},
+    "cap.twh.prepublish-check": {"promoted_to": "prepublish-check"},
+    "cap.twh.chinese-tech-typography": {"promoted_to": "chinese-tech-typography"},
+    "cap.twh.distribution-last-mile": {"promoted_to": "distribution-last-mile"},
+    "cap.twh.tech-translation-workflow": {"promoted_to": "tech-translation-workflow"},
+    "cap.twh.book-writing-engineering": {"promoted_to": "book-writing-engineering"},
+    "cap.twh.writing-toolchain": {"served_by": "tech-writing-handbook-router"},
+    "cap.twh.feedback-and-traffic-anxiety": {"served_by": "tech-writing-handbook-router"}
+  }
+}

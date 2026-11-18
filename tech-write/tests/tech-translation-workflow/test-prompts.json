@@ -1,0 +1,48 @@
+{
+  "skill": "tech-translation-workflow",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "帮我翻译这段技术文档：[英文段落]",
+      "expected_behavior": "调用 tech-translation-workflow，理解→初译→五技巧→脱稿校对",
+      "notes": "正面：翻译请求"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "这句英文直译出来特别别扭，怎么翻得自然点？",
+      "expected_behavior": "调用 tech-translation-workflow，按功能对等优先级+结构技巧处理",
+      "notes": "正面：直译意译取舍"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "我接了一本技术书的翻译，流程上要注意什么？",
+      "expected_behavior": "调用 tech-translation-workflow，给术语表/反积压/脱稿校对规范",
+      "notes": "正面：翻译项目"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我把这篇中文技术文章润色得更通俗易懂",
+      "expected_behavior": "应触发路由入口的 clear-expression",
+      "notes": "跨 skill 诱饵：表达润色"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我用英文写一篇技术博客",
+      "expected_behavior": "非翻译任务：属写作类（drafting-workflow 路由），不应触发本 skill",
+      "notes": "边界外诱饵"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "直接用 DeepL 翻完就发可以吗？",
+      "expected_behavior": "应给机器翻译校验纪律（联系上下文核对/脱稿校对/不可照搬），不直接说可以",
+      "notes": "边界：机器翻译依赖"
+    }
+  ]
+}

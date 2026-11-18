@@ -1,0 +1,43 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "SKILL.md": "081e5da5f79e570120834750a21db826519412ba4fbc5a0b364b62d707fdbbd9",
+    "references/capabilities/article-positioning.md": "8bf668bcc07e6154676de35860ec1115b5e75a09d1e6d4847bd20b72530b8b34",
+    "references/capabilities/article-quality-review.md": "83b0caf1e2f80d0a88404eb094875a52a51a9fa3cfabd0e0b09070f0af3867cf",
+    "references/capabilities/book-writing-engineering.md": "5fea963a0775fdf7bd0804b93aafc73ed058c4722f8208ce0e9187b21d9f1510",
+    "references/capabilities/chinese-tech-typography.md": "92f6a460e3d302f60325c8cd5f92c9f66d982d7ea274dd538c35f585aa983b6c",
+    "references/capabilities/clear-expression.md": "0903a1f8d81f4ff279200553f70215637f1b846f402559b80a4339fab0e131eb",
+    "references/capabilities/distribution-last-mile.md": "8b12692f78472639ef1784ca9b881afccb85c205549a50a9caaac6d87e09ead7",
+    "references/capabilities/drafting-workflow.md": "76ea510fc673bdfcb0ae6e9080ba5ad93f76083cf2baec22e86624577b6bf033",
+    "references/capabilities/feedback-and-traffic-anxiety.md": "c9b0eaf6d27e47723de9de4be09a8199760bbf4b234f357c1f99d7c37152d64d",
+    "references/capabilities/prepublish-check.md": "b172e69931dcc2130d2641ade425a62f3fc5cc6c3b606ae40b9516282e6f183d",
+    "references/capabilities/tech-translation-workflow.md": "6316a47390ee45f2a8d64c91a5d4f9aa0a0e20f275af93045dc2c4050dc24c6a",
+    "references/capabilities/writing-driven-learning.md": "4b2f9775d83a87e6c693934c8e05acb7f09947665cf5b522be2cceb6f61a37e7",
+    "references/capabilities/writing-habit-design.md": "9dad1fc822b74a24a48a6ba3acad6d4e4289e090451ae536a57a113ac9253a79",
+    "references/capabilities/writing-toolchain.md": "24ef690b33b8a9a9e34b6822534df220dfeb372c913966654557e7f8cd548039",
+    "references/capability-index.md": "7b10cdb5dfca93ac8dcbba06a38cfcddce3347d4ce269763f3dc0b254d091c84",
+    "references/cheatsheet.md": "bc778c0d2272922a251a27bfb656ea1e6a095553f19db05d6c7c244b7b5f7582",
+    "references/glossary.md": "6ceb4718d2623d4d90753b882449555d2ff4515c11c7d1a993ed0accc7c0e498",
+    "references/overview.md": "06138563d9ac443e1aadcfc4e1a04e954695fd67dc12a51c3d9787f03d885975"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.tech-writing-handbook",
+  "bundle_sha256": "09be96a41ce0dbf1b1ffa41daaa68aae4a1213edae3738580b5e8a48a874b0ce",
+  "variant": "single",
+  "run_id": "run-20261118-123420-e1c8fe",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 7,
+    "capability_count": 13,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 7 个晋级 Skill，共 8 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

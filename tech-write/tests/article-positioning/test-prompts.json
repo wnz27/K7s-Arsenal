@@ -1,0 +1,48 @@
+{
+  "skill": "article-positioning",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我想写一篇关于团队 Code Review 的文章，但还没想清楚怎么写",
+      "expected_behavior": "调用 article-positioning，先过说服自己门禁，再引导答三问",
+      "notes": "正面：模糊写作意图"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "帮我看看这几个选题哪个值得写：1）我们团队的微服务踩坑 2）K8s 入门科普",
+      "expected_behavior": "调用 article-positioning，逐题走定位三问并给角度建议",
+      "notes": "正面：选题纠结"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "这个主题写给谁看比较合适？读完希望他们做什么？",
+      "expected_behavior": "调用 article-positioning，补全受众与行动两问",
+      "notes": "正面：受众定位"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "我这篇稿子写完了，帮我看看质量怎么样、哪里要改",
+      "expected_behavior": "应触发 article-quality-review，不是定位",
+      "notes": "跨 skill 诱饵：成稿评估"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我把这段英文翻译成中文",
+      "expected_behavior": "应触发 tech-translation-workflow 或无需本 skill",
+      "notes": "跨 skill 诱饵：翻译"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想写点什么，但不知道写什么",
+      "expected_behavior": "无主题：应先转素材发现（drafting-workflow 第 0 步），而非强行定位",
+      "notes": "边界：无意图输入"
+    }
+  ]
+}

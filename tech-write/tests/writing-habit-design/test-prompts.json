@@ -1,0 +1,48 @@
+{
+  "skill": "writing-habit-design",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我博客开了三次都放弃了，怎么才能坚持下去？",
+      "expected_behavior": "路由至 writing-habit-design，诊断反馈结构并设计正反馈机制",
+      "notes": "正面：坚持问题"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "总觉得没时间写作，下班就很累了",
+      "expected_behavior": "路由至 writing-habit-design，降档目标+时间成本口径校准",
+      "notes": "正面：时间障碍"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "写作到底值不值得投入？感觉看不到回报",
+      "expected_behavior": "路由至 writing-habit-design，存款模型与写作驱动学习预期管理",
+      "notes": "正面：价值怀疑"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "认真写的文章阅读量个位数，好难过",
+      "expected_behavior": "应路由至 feedback-and-traffic-anxiety",
+      "notes": "跨能力诱饵：流量情绪"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这篇文章写得怎么样",
+      "expected_behavior": "应触发 article-quality-review",
+      "notes": "跨 skill 诱饵：质量评估"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "用 AI 帮我写博客是不是也能收获写作的好处",
+      "expected_behavior": "应指出写作驱动学习要求本人深度加工，AI 代写不兑现学习价值（B 字段）",
+      "notes": "边界：AI 代写"
+    }
+  ]
+}

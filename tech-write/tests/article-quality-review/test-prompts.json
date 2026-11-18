@@ -1,0 +1,48 @@
+{
+  "skill": "article-quality-review",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "帮我看看这篇文章写得怎么样、怎么改 [贴一篇草稿]",
+      "expected_behavior": "调用 article-quality-review，按五维框架逐项判定并给改进动作",
+      "notes": "正面：成稿求评"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "这篇稿子能不能发？帮我评审一下还缺什么",
+      "expected_behavior": "调用 article-quality-review 做五维评估（发前合规另转 prepublish-check）",
+      "notes": "正面：可发性咨询"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "感觉文章很平淡但说不出哪里不对，帮我分析下",
+      "expected_behavior": "调用 article-quality-review，重点查加分项与表达维度",
+      "notes": "正面：模糊不满"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "文章明天要发了，帮我做最后检查和敏感信息排查",
+      "expected_behavior": "应触发 prepublish-check",
+      "notes": "跨 skill 诱饵：发布前把关"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我检查这篇文章的中英文空格和段落格式",
+      "expected_behavior": "应触发 chinese-tech-typography",
+      "notes": "跨 skill 诱饵：纯排版"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "帮我把这篇文章改成十万加爆款",
+      "expected_behavior": "可评估质量，但应拒绝标题党/博眼球导向（B 字段），不为流量牺牲质量立场",
+      "notes": "边界：流量导向请求"
+    }
+  ]
+}

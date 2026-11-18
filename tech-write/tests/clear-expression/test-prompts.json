@@ -1,0 +1,48 @@
+{
+  "skill": "clear-expression",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我写的技术文章别人总说看不懂，怎么办",
+      "expected_behavior": "路由至 clear-expression，想象读者法+转嫁扫描",
+      "notes": "正面：看不懂"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "怎么把分布式锁这个概念讲给产品经理听",
+      "expected_behavior": "路由至 clear-expression，设定低背景人设并改写",
+      "notes": "正面：通俗解释"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "代码注释应该写多少？有人说越少越好",
+      "expected_behavior": "路由至 clear-expression，用'为什么 vs 是什么'边界回答",
+      "notes": "正面：注释之问"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我把这段英文翻译成中文",
+      "expected_behavior": "应触发 tech-translation-workflow",
+      "notes": "跨 skill 诱饵：翻译"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我整体评价这篇文章质量",
+      "expected_behavior": "应触发 article-quality-review",
+      "notes": "跨 skill 诱饵：质量"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我给同行专家写 RFC，也要按入门读者写吗",
+      "expected_behavior": "应说明想象读者法不适用于专家间通信，避免过度解释（B 字段）",
+      "notes": "边界：专家语境"
+    }
+  ]
+}

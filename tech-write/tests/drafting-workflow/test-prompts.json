@@ -1,0 +1,48 @@
+{
+  "skill": "drafting-workflow",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "我有个关于 CI 优化的选题，怎么一步步写成文章？",
+      "expected_behavior": "路由至 drafting-workflow，走调研→提纲→配图→成稿流程",
+      "notes": "正面：成稿流程"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "我只有通勤和睡前的碎片时间，能写作吗",
+      "expected_behavior": "路由至 drafting-workflow，脑力/体力劳动时间切分",
+      "notes": "正面：碎片时间"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "写长文总是写着写着就收不住、结构散了",
+      "expected_behavior": "路由至 drafting-workflow，自上而下骨架（并呈现两种模式分歧）",
+      "notes": "正面：结构失控"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "还没想清楚这篇写给谁看、写什么",
+      "expected_behavior": "应先触发 article-positioning",
+      "notes": "跨 skill 诱饵：定位前置"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "写完了帮我评审一下",
+      "expected_behavior": "应触发 article-quality-review",
+      "notes": "跨 skill 诱饵：评估"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "列提纲我要花两三天才能想完美",
+      "expected_behavior": "应给半小时时间盒规则，防构思内耗",
+      "notes": "边界：完美主义拖延"
+    }
+  ]
+}

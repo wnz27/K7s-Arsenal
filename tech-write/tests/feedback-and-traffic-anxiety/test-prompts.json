@@ -1,0 +1,48 @@
+{
+  "skill": "feedback-and-traffic-anxiety",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "文章被一个大 V 挂了，好多人骂我，要不要回应？",
+      "expected_behavior": "路由至 feedback-and-traffic-anxiety，分类响应+分量判断",
+      "notes": "正面：恶评应对"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "认真写的文章没人看，随便写的反而爆了，心态崩了",
+      "expected_behavior": "路由至 feedback-and-traffic-anxiety，读者反应不可预测+坐标系调整",
+      "notes": "正面：数据反差"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "要不要追热点写流量文？",
+      "expected_behavior": "路由至 feedback-and-traffic-anxiety，叫好叫座双体系+双向筛选",
+      "notes": "正面：流量诱惑"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "文章没人看，帮我看看怎么推广",
+      "expected_behavior": "应触发 distribution-last-mile",
+      "notes": "跨 skill 诱饵：推广"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "我坚持不了写作，怎么办",
+      "expected_behavior": "应路由至 writing-habit-design",
+      "notes": "跨能力诱饵：习惯"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "有人在我的文章评论区造谣诽谤，还人身攻击",
+      "expected_behavior": "超出口头应对范围：应建议使用平台举报/屏蔽/法律途径，并如实说明超出原书范围（B 字段）",
+      "notes": "边界：网暴"
+    }
+  ]
+}

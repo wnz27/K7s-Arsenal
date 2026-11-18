@@ -1,0 +1,48 @@
+{
+  "skill": "prepublish-check",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "文章明天要发，帮我做最后检查",
+      "expected_behavior": "调用 prepublish-check，执行三遍审读+脱敏四类并给放行结论",
+      "notes": "正面：发布前检查"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "帮我排查这篇文章里有没有敏感信息，涉及公司项目",
+      "expected_behavior": "调用 prepublish-check，重点跑脱敏四类清单",
+      "notes": "正面：脱敏请求"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "发布前一般都要检查什么？",
+      "expected_behavior": "调用 prepublish-check，输出审读+脱敏流程清单",
+      "notes": "正面：流程咨询"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这篇文章怎么写得更好、哪里要改进",
+      "expected_behavior": "应触发 article-quality-review",
+      "notes": "跨 skill 诱饵：质量改进"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一段 70 字以内的推广简介",
+      "expected_behavior": "应触发 distribution-last-mile",
+      "notes": "跨 skill 诱饵：传播物料"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "[一篇含客户名截图和内部数据的文章] 帮我看看这篇行不行",
+      "expected_behavior": "虽无明确脱敏请求，也应识别敏感信息风险并主动提示脱敏（高危项）",
+      "notes": "边界：隐含脱敏需求"
+    }
+  ]
+}

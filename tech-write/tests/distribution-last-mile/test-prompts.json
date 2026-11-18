@@ -1,0 +1,48 @@
+{
+  "skill": "distribution-last-mile",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "st-01",
+      "type": "should_trigger",
+      "prompt": "文章写完了，接下来怎么推广？",
+      "expected_behavior": "调用 distribution-last-mile，备三件套+渠道决策+交互闭环",
+      "notes": "正面：推广咨询"
+    },
+    {
+      "id": "st-02",
+      "type": "should_trigger",
+      "prompt": "帮我准备发布物料：一段简介、引用文字和配图建议",
+      "expected_behavior": "调用 distribution-last-mile，产出≤70 字引文等三件套",
+      "notes": "正面：物料请求"
+    },
+    {
+      "id": "st-03",
+      "type": "should_trigger",
+      "prompt": "技术文章发哪些平台比较好？要不要做视频？",
+      "expected_behavior": "调用 distribution-last-mile，按形态×成本做渠道取舍",
+      "notes": "正面：渠道选择"
+    },
+    {
+      "id": "snt-01",
+      "type": "should_not_trigger",
+      "prompt": "文章发布前要检查什么？",
+      "expected_behavior": "应触发 prepublish-check",
+      "notes": "跨 skill 诱饵：发布前"
+    },
+    {
+      "id": "snt-02",
+      "type": "should_not_trigger",
+      "prompt": "文章发了没人看，我特别沮丧，还要不要写",
+      "expected_behavior": "应触发 feedback-and-traffic-anxiety",
+      "notes": "跨 skill 诱饵：心态"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "帮我制定一个十个平台同步分发的计划",
+      "expected_behavior": "应先做渠道优先抉择（精力有限），反对全渠道覆盖，给出 1-2 个优先渠道建议",
+      "notes": "边界：全渠道诉求"
+    }
+  ]
+}
